@@ -26,7 +26,7 @@ imageInput.addEventListener("change", () => {
   img.src = URL.createObjectURL(file);
   
   // Add loading effect
-  preview.innerHTML = '<div style="text-align: center; padding: 20px; color: #94a3b8;">📸 Loading image...</div>';
+  preview.innerHTML = '<div style="text-align: center; padding: 20px; color: #94a3b8;"> Loading image...</div>';
   
   img.onload = () => {
     preview.innerHTML = "";
@@ -55,7 +55,7 @@ analyzeBtn.addEventListener("click", async () => {
   
   // Add analyzing class for special effects
   result.classList.add('analyzing');
-  result.innerHTML = '🤖 <strong>AI is analyzing your image...</strong><br/>Deep learning model processing...';
+  result.innerHTML = ' <strong>AI is analyzing your image...</strong><br/>Deep learning model processing...';
 
   // MOCK RESPONSE with realistic delay
   setTimeout(() => {
@@ -72,14 +72,15 @@ analyzeBtn.addEventListener("click", async () => {
         border: 'rgba(34, 197, 94, 0.5)',
         icon: '✅'
       },
+      
       {
         prediction: 'Malignant (Melanoma)',
         confidence: '0.87',
         risk: 'High',
         color: 'rgba(239, 68, 68, 0.1)',
         border: 'rgba(239, 68, 68, 0.5)',
-        icon: '⚠️'
       },
+      
       {
         prediction: 'Suspicious (Requires Review)',
         confidence: '0.74',
@@ -109,40 +110,6 @@ analyzeBtn.addEventListener("click", async () => {
     analyzeBtn.textContent = '🔄 Analyze Again';
   }, 3000);
 
-  /* REAL BACKEND CALL - Uncomment when backend is ready
-  try {
-    const formData = new FormData();
-    formData.append("image", selectedImage);
-
-    const res = await fetch("http://localhost:8000/predict", {
-      method: "POST",
-      body: formData
-    });
-
-    const data = await res.json();
-
-    loader.style.display = "none";
-    result.classList.remove('analyzing');
-    result.innerHTML = `
-      ✅ <strong>Analysis Complete!</strong><br/><br/>
-      <strong> Prediction:</strong> ${data.label}<br/>
-      <strong> Confidence:</strong> ${data.confidence}<br/>
-      <strong> Model:</strong> ${data.model || 'CNN (ResNet-50)'}
-    `;
-    
-    analyzeBtn.disabled = false;
-    analyzeBtn.textContent = '🔄 Analyze Again';
-  } catch (error) {
-    loader.style.display = "none";
-    result.classList.remove('analyzing');
-    result.innerHTML = '❌ <strong>Error:</strong> Could not connect to AI model. Please try again.';
-    result.style.background = 'rgba(239, 68, 68, 0.1)';
-    result.style.borderColor = 'rgba(239, 68, 68, 0.5)';
-    
-    analyzeBtn.disabled = false;
-    analyzeBtn.textContent = '🔄 Try Again';
-  }
-  */
 });
 
 // Add keyboard shortcuts
