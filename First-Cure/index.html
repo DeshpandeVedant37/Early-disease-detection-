@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>FIRST-CURE</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+
+<header class="header">
+<h1>FIRST-CURE</h1>
+<span class="subtitle">Skin Cancer Classification System</span>
+</header>
+
+
+<main class="panel">
+<section class="upload-section">
+<h2>Input: Dermoscopic Image</h2>
+<input type="file" id="imageInput" accept="image/*" />
+<div class="preview" id="preview"></div>
+</section>
+
+<section class="control-section">
+<button id="analyzeBtn" disabled>Run Inference</button>
+<div class="loader" id="loader"></div>
+</section>
+
+
+
+</main>
+
+<section class="output-section" id="outputSection" style="display: none;">
+<h2>Model Output</h2>
+<div class="result" id="result">Awaiting input...</div>
+</section>
+
+<footer class="footer">
+<p> Research Prototype – Not for Clinical Use</p>
+</footer>
+
+
+<script src="script.js"></script>
+</body>
+</html>
